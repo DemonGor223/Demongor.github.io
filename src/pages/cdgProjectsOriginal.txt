@@ -3,14 +3,14 @@ import Layout from '../layouts/Layout.astro'
 import { ProjectCard } from '../components/ProjectCard'
 import { projects } from '../data/project'
 
-// Obtener etiquetas únicas de todos los proyectos
+// Get unique tags from all projects
 const allTags = [...new Set(projects.flatMap((project) => project.tags))].sort()
 ---
 
-<Layout title="Proyectos | Portafolio de Desarrollador Moderno">
+<Layout title="Projects | Modern Developer Portfolio">
   <main class="min-h-screen py-20 px-4">
     <div class="container mx-auto max-w-6xl">
-      <!-- Encabezado -->
+      <!-- Header -->
       <div class="text-center mb-12">
         <a href="/" class="inline-flex items-center text-blue-600 hover:text-blue-800 mb-4">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor">
@@ -20,26 +20,26 @@ const allTags = [...new Set(projects.flatMap((project) => project.tags))].sort()
           Volver al inicio
         </a>
         <h1 class="text-4xl font-bold text-blue-900 mb-4">Mis Proyectos</h1>
-        <p class="text-blue-600 max-w-2xl mx-auto">Explora mis últimos proyectos y experimentos. Cada proyecto representa un desafío único y su solución.</p>
+        <p class="text-blue-600 max-w-2xl mx-auto">Explore my latest projects and experiments. Each project represents a unique challenge and solution.</p>
       </div>
 
-      <!-- Sección de Búsqueda y Filtros -->
+      <!-- Search and Filter Section -->
       <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-xl mb-8">
         <div class="flex flex-col gap-4">
-          <!-- Fila de Búsqueda y Reinicio -->
+          <!-- Search and Reset Row -->
           <div class="flex gap-4">
             <div class="flex-1">
               <input
                 type="text"
                 id="search"
-                placeholder="Buscar proyectos..."
+                placeholder="Search projects..."
                 class="w-full px-4 py-2 rounded-xl bg-white border border-blue-100 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-colors"
               />
             </div>
-            <button id="resetFilters" class="px-4 py-2 text-blue-600 border border-blue-100 rounded-xl hover:bg-blue-50 transition-colors"> Reiniciar Filtros </button>
+            <button id="resetFilters" class="px-4 py-2 text-blue-600 border border-blue-100 rounded-xl hover:bg-blue-50 transition-colors"> Reset Filters </button>
           </div>
 
-          <!-- Filtro de Etiquetas -->
+          <!-- Tags Filter -->
           <div class="flex-1">
             <p class="text-sm text-blue-600 mb-2">Filtrar por temas:</p>
             <div class="flex flex-wrap gap-2">
@@ -56,7 +56,7 @@ const allTags = [...new Set(projects.flatMap((project) => project.tags))].sort()
         </div>
       </div>
 
-      <!-- Cuadrícula de Proyectos -->
+      <!-- Projects Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projectsGrid">
         {
           projects.map((project) => (
@@ -88,7 +88,7 @@ const allTags = [...new Set(projects.flatMap((project) => project.tags))].sort()
 
     if (!searchInput || !projectsGrid || !resetButton) return
 
-    // Almacenar datos iniciales de proyectos
+    // Store initial projects data
     projectsData = Array.from(projectsGrid.children).map((child) => ({
       element: child,
       title: child.querySelector('h3')?.textContent?.toLowerCase() || '',
@@ -96,7 +96,7 @@ const allTags = [...new Set(projects.flatMap((project) => project.tags))].sort()
       tags: Array.from(child.querySelectorAll('[data-tag]')).map((tag) => tag.getAttribute('data-tag')?.toLowerCase() || ''),
     }))
 
-    // Función de filtrado
+    // Filter function
     const filterProjects = () => {
       const searchTerm = searchInput.value.toLowerCase()
       const selectedTags = Array.from(tagCheckboxes)
@@ -115,7 +115,7 @@ const allTags = [...new Set(projects.flatMap((project) => project.tags))].sort()
       })
     }
 
-    // Función de reinicio
+    // Reset function
     const resetFilters = () => {
       searchInput.value = ''
       tagCheckboxes.forEach((checkbox) => {
@@ -129,7 +129,7 @@ const allTags = [...new Set(projects.flatMap((project) => project.tags))].sort()
       filterProjects()
     }
 
-    // Agregar event listeners
+    // Add event listeners
     searchInput.addEventListener('input', filterProjects)
     resetButton.addEventListener('click', resetFilters)
     tagCheckboxes.forEach((checkbox) => {
@@ -148,7 +148,7 @@ const allTags = [...new Set(projects.flatMap((project) => project.tags))].sort()
     @apply bg-blue-500 text-white border-blue-500;
   }
 
-  /* Asegurar que los contenedores de proyectos mantengan el diseño de cuadrícula */
+  /* Ensure project wrappers maintain grid layout */
   .project-wrapper:not(.hidden) {
     display: block;
   }
