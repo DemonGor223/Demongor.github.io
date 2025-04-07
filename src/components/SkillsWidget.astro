@@ -1,27 +1,43 @@
 ---
 interface Skill {
   name: string;
-  level: 'Expert' | 'Advanced' | 'Intermediate';
+  level: 'BAJO' | 'AVANZADO' | 'INTERMEDIO';
   icon: string;
 }
 
 const skills: Skill[] = [
-  { name: 'JavaScript', level: 'Expert', icon: '⚡' },
-  { name: 'TypeScript', level: 'Expert', icon: '📘' },
-  { name: 'React', level: 'Expert', icon: '⚛️' },
-  { name: 'Node.js', level: 'Advanced', icon: '🟢' },
-  { name: 'Python', level: 'Advanced', icon: '🐍' },
+  { name: 'JavaScript', level: 'INTERMEDIO', icon: '⚡' },
+  { name: 'TypeScript', level: 'INTERMEDIO', icon: '📘' },
+  { name: 'React', level: 'INTERMEDIO', icon: '⚛️' },
+  { name: 'Node.js', level: 'INTERMEDIO', icon: '🟢' },
+  { name: 'Python', level: 'AVANZADO', icon: '🐍' },
+  { name: 'C++', level: 'AVANZADO', icon: '📝' },
+  { name: 'Java', level: 'AVANZADO', icon: '☕️' },
+  { name: 'C#', level: 'INTERMEDIO', icon: '📦' },
+  { name: 'PHP', level: 'INTERMEDIO', icon: '🐘' },
+  { name: 'HTML', level: 'AVANZADO', icon: '🌐' },
+  { name: 'CSS', level: 'INTERMEDIO', icon: '🎨' },
+  { name: 'SQL', level: 'INTERMEDIO', icon: '📊' },
+  { name: 'Git', level: 'INTERMEDIO', icon: '🐙' },
+  { name: 'Astro', level: 'AVANZADO', icon: '🪐' },
+  { name: 'Dart', level: 'AVANZADO', icon: '🦆' },
+  { name: 'Flutter', level: 'INTERMEDIO', icon: '🌍' },
+  { name: 'Node.js', level: 'AVANZADO', icon: '🔄' },
+  { name: 'Angular', level: 'AVANZADO', icon: '🔧' },
+  { name: 'Python/Django', level: 'AVANZADO', icon: '🐍' },
+
+
 ];
 
 const levelColors = {
-  Expert: 'bg-blue-100 text-blue-700',
-  Advanced: 'bg-green-100 text-green-700',
-  Intermediate: 'bg-yellow-100 text-yellow-700'
+  BAJO: 'bg-blue-100 text-blue-700',
+  AVANZADO: 'bg-green-100 text-green-700',
+  INTERMEDIO: 'bg-yellow-100 text-yellow-700'
 };
 ---
 
 <div class="bg-white/80 backdrop-blur-lg rounded-3xl p-6 shadow-xl">
-  <h3 class="text-2xl font-semibold mb-4">Skills</h3>
+  <h3 class="text-2xl font-semibold mb-4">Habilidades</h3>
   <div class="space-y-4">
     {skills.map((skill) => (
       <div class="flex items-center justify-between p-3 hover:bg-apple-gray-50 rounded-xl transition-colors">
